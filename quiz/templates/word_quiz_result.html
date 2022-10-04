@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+  <h1 class="mt-5" style="font-size: 8rem;">{{ score }} / {{ total_score }}</h1>
+  <p class="fw-bold mb-5">
+    {% if score == total_score %}
+    축하합니다! 다 맞으셨군요!
+    {% elif score|add:1 == total_score %}
+    아쉽게 하나를 틀리셨군요... 그래도 잘하셨습니다!
+    {% elif score == 0 %}
+    퀴즈를 하나도 맞추지 못하셨네요... <br>
+    공부가 더 필요할 것 같습니다!
+    {% else %}
+    단어를 몇개 틀리셨군요...! <br>
+    그 단어들을 조금 더 공부하시면 좋을 것 같습니다!
+    {% endif %}
+  </p>
+  <a href="{% url 'quiz:index' %}" class="btn btn-primary">홈으로</a>
+  &nbsp;
+  <a href="{% url 'quiz:start_quiz' %}" class="btn btn-secondary">한번 더</a>
+</div>
+{% endblock %}

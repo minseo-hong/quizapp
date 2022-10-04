@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="my-5 text-center">단어 수정</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="english" class="form-label">영어</label>
+    <input type="text" class="form-control" id="english" name="english" value="{{ word.english }}" autocomplete="off">
+  </div>
+  <div class="mb-4">
+    <label for="korean" class="form-label">뜻</label>
+    <input type="text" class="form-control" id="korean" name="korean" value="{{ word.korean }}" autocomplete="off">
+  </div>
+  <div class="d-flex justify-content-between">
+    <div class="ms-2">
+      <button type="submit" class="btn btn-primary me-2">확인</button>
+      <a href="{% url 'quiz:index' %}" class="btn btn-secondary">취소</a>
+    </div>
+    <a href="{% url 'quiz:delete_word' word.id %}" class="btn btn-danger me-2">삭제</a>
+  </div>
+</form>
+{% endblock %}

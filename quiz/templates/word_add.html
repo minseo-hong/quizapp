@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="my-5 text-center">단어 추가</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="english" class="form-label">영어</label>
+    <input type="text" class="form-control" id="english" name="english" placeholder="추가하고 싶은 영단어를 입력해주세요." autocomplete="off">
+  </div>
+  <div class="mb-4">
+    <label for="korean" class="form-label">뜻</label>
+    <input type="text" class="form-control" id="korean" name="korean" placeholder="추가하고 싶은 영단어의 한국어 뜻을 입력해주세요." autocomplete="off">
+  </div>
+  <div class="position-relative">
+    <div class="position-absolute top-0 start-50 translate-middle-x">
+      <button type="submit" class="btn btn-primary ">추가</button>
+      <a href="{% url 'quiz:index' %}" class="btn btn-secondary">취소</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

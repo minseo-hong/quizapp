@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="my-5 text-center">Quiz</h2>
+<form method="post" onkeydown="return event.key != 'Enter';">
+  {% csrf_token %}
+  {% for word in word_list %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">{{ word.korean }}</h5>
+      <input type="text" class="form-control" name="{{ word.korean }}" autocomplete="off">
+    </div>
+  </div>
+  {% endfor %}
+  <div class="position-relative mb-5">
+    <button type="submit" class="btn btn-primary ms-2">확인</button>
+    <a href="{% url 'quiz:index' %}" class="btn btn-secondary btn-sm me-2 px-3 position-absolute top-50 end-0 translate-middle-y">홈으로 돌아가기</a>
+  </div>
+<form>
+{% endblock %}
